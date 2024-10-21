@@ -501,9 +501,9 @@ while game_loop:
         enemy_mengde += 1
         score_behind -= 33
 
-    if score_power >= 5:
+    if score_power >= 50:
         sprite_powerups.add(Powerups(random.randrange(1,amount_of_powerups+1)))
-        score_power -= 5
+        score_power -= 50
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_d]:
@@ -557,7 +557,12 @@ while game_loop:
     if times_hit == (health_points+1):
         print(f"you got a score of {score_start}")
         score_check()
+        times_hit = 1
+        for i in sprite_enemy:
+            sprite_enemy.remove()
+            print(i)
         main_menu()
+
 
     if trippleshot_power_up > 0 and score_start < 1000:
         trippleshot_power_up -= 1
